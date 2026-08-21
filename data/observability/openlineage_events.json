@@ -1,0 +1,52 @@
+{
+  "eventType": "COMPLETE",
+  "eventTime": "2026-08-21T01:38:34.634354Z",
+  "producer": "https://github.com/Phuccancode/text-to-analytical-insights",
+  "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json#/$defs/RunEvent",
+  "job": {
+    "namespace": "data_engineering",
+    "name": "medallion_pipeline_observability"
+  },
+  "inputs": [
+    {
+      "namespace": "s3://analytics-data-lake",
+      "name": "raw/orders",
+      "facets": {
+        "schema": {
+          "fields": [
+            {
+              "name": "order_id",
+              "type": "INTEGER"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "namespace": "s3://analytics-data-lake",
+      "name": "raw/reviews",
+      "facets": {
+        "schema": {
+          "fields": [
+            {
+              "name": "review_id",
+              "type": "INTEGER"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": [
+    {
+      "namespace": "duckdb://data/warehouse/analytics_dw.duckdb",
+      "name": "MARTS.mart_daily_revenue",
+      "facets": {
+        "dataQualityMetrics": {
+          "freshnessHoursLag": -21.0,
+          "anomaliesDetectedCount": 288
+        }
+      }
+    }
+  ]
+}
