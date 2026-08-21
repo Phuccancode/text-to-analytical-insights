@@ -1,0 +1,69 @@
+<div align="right">
+  <b>🇬🇧 English</b> | <a href="README.vn.md">🇻🇳 Tiếng Việt</a>
+</div>
+
+# 🏛️ dbt Medallion Transformation Pipeline (`analytics_dbt/`)
+
+The `analytics_dbt/` directory contains the dbt Core project configured with `dbt-duckdb` for data modeling, Medallion Architecture transformations, schema documentation (`docs.md`), and automated data quality testing.
+
+---
+
+## 📁 Directory Structure
+
+```
+analytics_dbt/
+ ├── dbt_project.yml        # Main dbt project configuration
+ ├── profiles.yml           # DuckDB database connection profile
+ └── models/
+      ├── docs.md           # Markdown documentation blocks for dbt catalog
+      ├── staging/          # Silver Layer: Cleaned, type-casted staging models
+      │    ├── schema.yml   # Staging schema definitions & tests
+      │    ├── stg_restaurants.sql
+      │    ├── stg_users.sql
+      │    ├── stg_food.sql
+      │    ├── stg_orders.sql
+      │    ├── stg_order_items.sql
+      │    └── stg_reviews.sql
+      └── marts/            # Gold Layer: Analytical business marts & dimensions
+           ├── schema.yml   # Gold Marts schema definitions & tests
+           ├── dim_restaurants.sql
+           ├── dim_users.sql
+           ├── dim_date.sql
+           ├── dim_food.sql
+           ├── fct_orders.sql
+           ├── fct_order_items.sql
+           ├── mart_daily_revenue.sql
+           ├── mart_delivery_performance.sql
+           └── mart_review_insights.sql
+```
+
+---
+
+## 🏆 Medallion Architecture Layers
+
+### 🥉 Bronze Layer (`RAW`)
+Raw table ingests loaded directly into DuckDB from AWS LocalStack S3 CSV data files.
+
+### 🥈 Silver Layer (`STAGING`)
+- Type casting (`TIMESTAMP`, `DECIMAL`, `INTEGER`).
+- Column standardization and cleaning.
+
+### 🥇 Gold Layer (`MARTS`)
+- **Dimensions**: `dim_restaurants`, `dim_users`, `dim_date`, `dim_food`.
+- **Fact Tables**: `fct_orders`, `fct_order_items`.
+- **Business Marts**: `mart_daily_revenue`, `mart_delivery_performance`, `mart_review_insights`.
+
+---
+
+## 🧪 Data Quality Tests (35 Assertions) & Docs
+
+Run tests manually:
+```bash
+cd analytics_dbt
+dbt build
+```
+
+Generate schema documentation catalog:
+```bash
+dbt docs generate
+```
