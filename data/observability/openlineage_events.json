@@ -1,6 +1,6 @@
 {
   "eventType": "COMPLETE",
-  "eventTime": "2026-08-31T04:46:26.422599Z",
+  "eventTime": "2026-09-01T04:27:11.557727Z",
   "producer": "https://github.com/Phuccancode/text-to-analytical-insights",
   "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json#/$defs/RunEvent",
   "job": {
@@ -44,7 +44,7 @@
       "facets": {
         "dataQualityMetrics": {
           "freshnessHoursLag": -18.0,
-          "anomaliesDetectedCount": 268
+          "anomaliesDetectedCount": 269
         }
       }
     }
