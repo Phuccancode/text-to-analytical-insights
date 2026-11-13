@@ -1,6 +1,6 @@
 {
   "eventType": "COMPLETE",
-  "eventTime": "2026-11-12T06:37:16.891599Z",
+  "eventTime": "2026-11-13T05:55:16.159850Z",
   "producer": "https://github.com/Phuccancode/text-to-analytical-insights",
   "schemaURL": "https://openlineage.io/spec/1-0-5/OpenLineage.json#/$defs/RunEvent",
   "job": {
@@ -43,8 +43,8 @@
       "name": "MARTS.mart_daily_revenue",
       "facets": {
         "dataQualityMetrics": {
-          "freshnessHoursLag": -16.0,
-          "anomaliesDetectedCount": 283
+          "freshnessHoursLag": -17.0,
+          "anomaliesDetectedCount": 279
         }
       }
     }
